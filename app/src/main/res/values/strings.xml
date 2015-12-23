@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Gamayun</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_new_item">New item</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_notebook">New notebook</string>
+    <string name="new_note">New note</string>
+
+    <string name="name_markup">Markup note</string>
+    <string name="name_wordcloud">Word cloud</string>
+    <string name="name_graph">Graph</string>
+    <string name="name_handwrite">Handwrite note</string>
+    <string name="name_journal">Journal</string>
+    <string name="name_calendar">Calendar</string>
+    <string name="name_person">Person card</string>
+    <string name="name_organization">Organization card</string>
+
+    <string name="type_markup">gmup</string>
+    <string name="type_wordcloud">gwcl</string>
+    <string name="type_graph">ggph</string>
+    <string name="type_handwrite">ghwr</string>
+    <string name="type_journal">gjrn</string>
+    <string name="type_calendar">gclr</string>
+    <string name="type_person">gpsn</string>
+    <string name="type_organization">gorg</string>
+
+</resources>

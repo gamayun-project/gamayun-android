@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="note_types">
+        <item>Markup note</item>
+        <item>Word cloud</item>
+        <item>Graph</item>
+        <item>Handwrite note</item>
+        <item>Journal</item>
+        <item>Calendar</item>
+        <item>Person card</item>
+        <item>Organization card</item>
+    </string-array>
+</resources>
