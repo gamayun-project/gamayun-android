@@ -12,8 +12,6 @@ public class WordCloudActivity extends AppCompatActivity {
         Intent i = getIntent();
         String filePath = i.getStringExtra(InfobaseActivity.FILE_PATH);
         setContentView(new WordCloudViewer(this, filePath));
-
-        //WordCloudViewer viewer=new WordCloudViewer(this);
     }
 
 

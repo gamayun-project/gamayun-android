@@ -27,13 +27,9 @@ public class NewNotebookDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int title = getArguments().getInt("title");
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity())
                 .setIcon(R.drawable.ic_note_add_black_36dp)
                 .setTitle(title)
-                //.setView(R.layout.new_notebook_dialog)
-
                 .setNegativeButton(R.string.cancel,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
@@ -44,15 +40,10 @@ public class NewNotebookDialogFragment extends DialogFragment {
 
 
         final EditText editText = new EditText(alertDialogBuilder.getContext());
-        //alert.setIcon(R.drawable.ic_note_add_black_36dp);
-        //alert
         alertDialogBuilder.setView(editText);
         alertDialogBuilder.setPositiveButton(R.string.ok,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
-                        //EditText editText = (EditText) getActivity().findViewById(R.id.new_infobase_name);
-                        //Log.i("_", Environment.getExternalStorageDirectory().toString() + "/Gamayun/" + editText.getText().toString());
                         File pathDir = new File(
                                 Environment.getExternalStorageDirectory().toString() +
                                         "/Gamayun/" +
@@ -60,15 +51,7 @@ public class NewNotebookDialogFragment extends DialogFragment {
                         );
                         if (!pathDir.exists()) {
                             pathDir.mkdirs();
-                            Log.i("_", "Trying");
                         }
-                        if (pathDir.exists()) {
-                            Log.i("_", "!!!");
-                        } else {
-                            Log.i("_", ":(");
-                        }
-
-                        //File newDir = new File(pathDir, editText.getText().toString());
                     }
                 }
         );

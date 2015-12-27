@@ -10,15 +10,8 @@ import java.io.IOException;
 public class FileHandler {
 
     public static String readSDCardFile(String localPath) {
-
-        //Find the directory for the SD Card using the API
-        //*Don't* hardcode "/sdcard"
         File sdcard = Environment.getExternalStorageDirectory();
-
-        //Get the text file
         File file = new File(sdcard, "/Gamayun/" + localPath);
-
-        //Read text from file
         StringBuilder text = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));

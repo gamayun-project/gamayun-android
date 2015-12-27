@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +25,7 @@ import java.util.List;
  */
 public class InfobaseActivity extends AppCompatActivity {
 
-    private String[] itemname;
+    private String[] itemsNames;
 
     private String name;
 
@@ -42,11 +41,10 @@ public class InfobaseActivity extends AppCompatActivity {
         Intent i = getIntent();
         name = i.getStringExtra(MainActivity.INFOBASE_NAME);
 
-        String dir = c.getApplicationInfo().dataDir;
         String path = Environment.getExternalStorageDirectory().toString()+"/Gamayun/"+name;
 
-        List<String> itemnameList = new ArrayList<>();
-        List<Integer> imgidList = new ArrayList<>();
+        List<String> itemsNamesList = new ArrayList<>();
+        List<Integer> imagesIdsList = new ArrayList<>();
         File f = new File(path);
         File file[] = f.listFiles();
         if (file != null) {
@@ -54,32 +52,32 @@ public class InfobaseActivity extends AppCompatActivity {
                 if (!inFile.isDirectory()) {
                     String[] parsedFilename = inFile.getName().split("\\.");
                     if (parsedFilename.length == 1) {
-                        itemnameList.add(inFile.getName());
-                        imgidList.add(R.drawable.ic_assignment_late_black_36dp);
+                        itemsNamesList.add(inFile.getName());
+                        imagesIdsList.add(R.drawable.ic_assignment_late_black_36dp);
                     }
                     else if (parsedFilename[parsedFilename.length - 1].equals(getString(R.string.type_markup))) {
-                        itemnameList.add(inFile.getName());
-                        imgidList.add(R.drawable.ic_class_black_24dp);
+                        itemsNamesList.add(inFile.getName());
+                        imagesIdsList.add(R.drawable.ic_class_black_24dp);
                     }
                     else if (parsedFilename[parsedFilename.length - 1].equals(getString(R.string.type_wordcloud))) {
-                        itemnameList.add(inFile.getName());
-                        imgidList.add(R.drawable.ic_backup_black_36dp);
+                        itemsNamesList.add(inFile.getName());
+                        imagesIdsList.add(R.drawable.ic_backup_black_36dp);
                     }
                     else if (parsedFilename[parsedFilename.length - 1].equals(getString(R.string.type_graph))) {
-                        itemnameList.add(inFile.getName());
-                        imgidList.add(R.drawable.ic_change_history_black_36dp);
+                        itemsNamesList.add(inFile.getName());
+                        imagesIdsList.add(R.drawable.ic_change_history_black_36dp);
                     }
                 }
             }
         }
 
-        this.itemname = new String[itemnameList.size()];
-        itemnameList.toArray(itemname);
+        this.itemsNames = new String[itemsNamesList.size()];
+        itemsNamesList.toArray(itemsNames);
 
-        Integer[] imgid = new Integer[imgidList.size()];
-        imgidList.toArray(imgid);
+        Integer[] imagesIds = new Integer[imagesIdsList.size()];
+        imagesIdsList.toArray(imagesIds);
 
-        IconListAdapter adapter=new IconListAdapter(this, itemname, imgid);
+        IconListAdapter adapter=new IconListAdapter(this, itemsNames, imagesIds);
         ListView list = (ListView) findViewById(R.id.list_main);
         list.setAdapter(adapter);
 
@@ -89,7 +87,7 @@ public class InfobaseActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                String selectedItem = itemname[+position];
+                String selectedItem = itemsNames[+position];
                 if (selectedItem.endsWith("gwcl")) {
                     Intent i = new Intent(getApplicationContext(), WordCloudActivity.class);
                     i.putExtra(FILE_PATH, name + "/" + selectedItem);
@@ -119,10 +117,7 @@ public class InfobaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // получим идентификатор выбранного пункта меню
         int id = item.getItemId();
-
-        // Операции для выбранного пункта меню
         switch (id) {
             case R.id.action_new_item:
                 return true;

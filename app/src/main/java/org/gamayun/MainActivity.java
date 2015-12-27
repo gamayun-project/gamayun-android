@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[] itemname;
+    private String[] itemsNames;
 
     public final static String INFOBASE_NAME = "com.gamayun.INFOBASE_NAME";
 
@@ -32,29 +31,28 @@ public class MainActivity extends AppCompatActivity {
 
         ContextWrapper c = new ContextWrapper(this);
 
-        String dir = c.getApplicationInfo().dataDir;
         String path = Environment.getExternalStorageDirectory().toString()+"/Gamayun";
 
-        List<String> itemname_list = new ArrayList<>();
-        List<Integer> imgid_list = new ArrayList<>();
+        List<String> itemsNamesList = new ArrayList<>();
+        List<Integer> imagesIdsList = new ArrayList<>();
         File f = new File(path);
         File file[] = f.listFiles();
         if (file != null) {
             for (File inFile : file) {
                 if (inFile.isDirectory()) {
-                    itemname_list.add(inFile.getName());
-                    imgid_list.add(R.drawable.infobase);
+                    itemsNamesList.add(inFile.getName());
+                    imagesIdsList.add(R.drawable.infobase);
                 }
             }
         }
 
-        this.itemname = new String[itemname_list.size()];
-        itemname_list.toArray(itemname);
+        this.itemsNames = new String[itemsNamesList.size()];
+        itemsNamesList.toArray(itemsNames);
 
-        Integer[] imgid = new Integer[imgid_list.size()];
-        imgid_list.toArray(imgid);
+        Integer[] imagesIds = new Integer[imagesIdsList.size()];
+        imagesIdsList.toArray(imagesIds);
 
-        IconListAdapter adapter=new IconListAdapter(this, itemname, imgid);
+        IconListAdapter adapter=new IconListAdapter(this, itemsNames, imagesIds);
         ListView list = (ListView) findViewById(R.id.list_main);
         list.setAdapter(adapter);
 
@@ -64,12 +62,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                String infobaseName = itemname[+position];
+                String infobaseName = itemsNames[+position];
                 Intent i = new Intent(getApplicationContext(), InfobaseActivity.class);
                 i.putExtra(INFOBASE_NAME, infobaseName);
                 startActivity(i);
-                //Toast.makeText(getApplicationContext(), SelectedItem, Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -91,10 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // получим идентификатор выбранного пункта меню
         int id = item.getItemId();
-
-        // Операции для выбранного пункта меню
         switch (id) {
             case R.id.action_new_item:
                 return true;

@@ -21,7 +21,6 @@ public class WordCloudParser {
             if (s.startsWith("#type:")) {
                 WordCloudType wcType = new WordCloudType();
                 wcType.setTypeName(s.substring(6, s.lastIndexOf("[")));
-                //String name = s.substring(6, s.lastIndexOf("["));
                 String[] params = s.
                         substring(s.lastIndexOf("[") + 1, s.lastIndexOf("]")).
                         split(",");
@@ -38,7 +37,6 @@ public class WordCloudParser {
             } else {
                 WordCloudElement wcElement = new WordCloudElement();
                 wcElement.setText(s.substring(0, s.lastIndexOf("[")));
-                //String name = s.substring(6, s.lastIndexOf("["));
                 String[] params = s.
                         substring(s.lastIndexOf("[") + 1, s.lastIndexOf("]")).
                         split(",");

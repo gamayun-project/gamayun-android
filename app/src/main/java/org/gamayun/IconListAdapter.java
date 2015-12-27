@@ -11,14 +11,14 @@ import android.widget.TextView;
 public class IconListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] itemname;
-    private final Integer[] imgid;
+    private final String[] itemsNames;
+    private final Integer[] imagesIds;
 
-    public IconListAdapter(Activity context, String[] itemname, Integer[] imgid) {
-        super(context, R.layout.icon_list_view, itemname);
+    public IconListAdapter(Activity context, String[] itemsNames, Integer[] imagesIds) {
+        super(context, R.layout.icon_list_view, itemsNames);
         this.context=context;
-        this.itemname=itemname;
-        this.imgid=imgid;
+        this.itemsNames = itemsNames;
+        this.imagesIds = imagesIds;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -26,8 +26,8 @@ public class IconListAdapter extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.icon_list_view, null, true);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.name);
-        txtTitle.setText(itemname[position]);
-        imageView.setImageResource(imgid[position]);
+        txtTitle.setText(itemsNames[position]);
+        imageView.setImageResource(imagesIds[position]);
         return rowView;
 
     }
