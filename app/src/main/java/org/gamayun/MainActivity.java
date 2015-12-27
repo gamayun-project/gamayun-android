@@ -20,10 +20,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView list;
     private String[] itemname;
 
-    private Integer[] imgid;
     public final static String INFOBASE_NAME = "com.gamayun.INFOBASE_NAME";
 
 
@@ -53,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
         this.itemname = new String[itemname_list.size()];
         itemname_list.toArray(itemname);
 
-        this.imgid = new Integer[imgid_list.size()];
+        Integer[] imgid = new Integer[imgid_list.size()];
         imgid_list.toArray(imgid);
 
         IconListAdapter adapter=new IconListAdapter(this, itemname, imgid);
-        list=(ListView)findViewById(R.id.list_main);
+        ListView list = (ListView) findViewById(R.id.list_main);
         list.setAdapter(adapter);
 
 
@@ -99,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
         // Операции для выбранного пункта меню
         switch (id) {
             case R.id.action_new_item:
-                Intent i = new Intent(getApplicationContext(), NewItemActivity.class);
-                startActivity(i);
                 return true;
             case R.id.action_settings:
                 return true;

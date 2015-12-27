@@ -19,9 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewItemActivity"
-            android:label="New item"
-        />
         <activity android:name=".InfobaseActivity"
             android:label="Infobase view"
             />

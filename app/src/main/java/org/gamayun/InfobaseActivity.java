@@ -26,10 +26,7 @@ import java.util.List;
  */
 public class InfobaseActivity extends AppCompatActivity {
 
-    private ListView list;
     private String[] itemname;
-
-    private Integer[] imgid;
 
     private String name;
 
@@ -79,11 +76,11 @@ public class InfobaseActivity extends AppCompatActivity {
         this.itemname = new String[itemnameList.size()];
         itemnameList.toArray(itemname);
 
-        this.imgid = new Integer[imgidList.size()];
+        Integer[] imgid = new Integer[imgidList.size()];
         imgidList.toArray(imgid);
 
         IconListAdapter adapter=new IconListAdapter(this, itemname, imgid);
-        list=(ListView)findViewById(R.id.list_main);
+        ListView list = (ListView) findViewById(R.id.list_main);
         list.setAdapter(adapter);
 
 
@@ -128,8 +125,6 @@ public class InfobaseActivity extends AppCompatActivity {
         // Операции для выбранного пункта меню
         switch (id) {
             case R.id.action_new_item:
-                Intent i = new Intent(getApplicationContext(), NewItemActivity.class);
-                startActivity(i);
                 return true;
             case R.id.action_settings:
                 return true;
